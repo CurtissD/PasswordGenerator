@@ -1,2 +1,2 @@
 # PasswordGenerator
-password generator based off of prompt responces 
+password generator based off of prompt responses where the user is able to create a password between 8 - 128 characters based off of alert prompt choices of uppercase, lowercase, numeric, and or special characters to include in the users password. once the choices have been made, and if the choices meet the allowed critera the password is generated to meet the specifications the user chose and is displayed in the provided area.
