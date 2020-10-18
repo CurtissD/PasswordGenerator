@@ -31,24 +31,40 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-
-// adding funtion to genereate a password
+//create variable for password possible characters
+let all;
+//if statement for user password caracter selections
+ if (lowercaseConfirm && specialCharConfirm && numericCharConfirm) {
+		all = numericChar + specialChar + lowercaseChar;
+ } else if (lowercaseConfirm && specialCharConfirm == false && numericCharConfirm) {
+	  	all = numericChar + lowercaseChar;
+ } else if (lowercaseConfirm && specialCharConfirm && numericCharConfirm == false) {
+	 	all =  specialChar + lowercaseChar;
+ } else if (lowercaseConfirm && specialCharConfirm == false && numericCharConfirm == false) {
+	 	all =  lowercaseChar;
+ } else if (lowercaseConfirm == false && specialCharConfirm && numericCharConfirm) {
+	 	all = numericChar + specialChar;
+ } else if (lowercaseConfirm == false && specialCharConfirm == false && numericCharConfirm) {
+	 	all = numericChar;
+ } else if (lowercaseConfirm == false && specialCharConfirm && numericCharConfirm == false) {
+	 	all = specialChar;
+ } else if (lowercaseConfirm == false && specialCharConfirm == false && numericCharConfirm == false) {
+	 	all = null;
+ };
+	 
+// funtion to genereate a password
  function generatePassword() {
-
-	// If statement for characters
-	if (passwordLength >=8 && passwordLength <=128 && lowercaseConfirm && specialCharConfirm && numericCharConfirm) {
-			var all = numericChar + specialChar + lowercaseChar;
+	//if statement to check for all variable value
+	if (all !== null) {
 			var tempPasswordString = "";
 			for (var i = 0; i < passwordLength; i++) {
 				var character = all.charAt(Math.floor(Math.random() * passwordLength));
-				console.log(character);
-				
 				tempPasswordString += character;
-				console.log(tempPasswordString);
-				
 			};
-
-	};
+	} else if (all == null) {
+		alert ("Please select OK on one or more prompts.");
+		location.reload();
+	}
 	 
 	 return tempPasswordString;
 };
